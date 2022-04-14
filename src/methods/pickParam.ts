@@ -1,7 +1,4 @@
-export const pickSearchParam = (
-  search: string,
-  keys: string | string[]
-): string => {
+export const pickParam = (search: string, keys: string | string[]): string => {
   const startingParams = new URLSearchParams(search);
   const entries: string[][] = Array.from(startingParams.entries());
 

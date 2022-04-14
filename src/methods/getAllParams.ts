@@ -1,7 +1,7 @@
 import { parseValue } from './shared';
 import { GetAllOptions } from '../types';
 
-export const getAllSearchParams = (
+export const getAllParams = (
   search: string,
   options?: GetAllOptions
 ): Record<string, any> | string[] => {

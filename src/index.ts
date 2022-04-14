@@ -1,10 +1,10 @@
-export { appendSearchParam } from './methods/appendSearchParam';
-export { excludeSearchParam } from './methods/excludeSearchParam';
-export { getAllSearchParams } from './methods/getAllSearchParams';
-export { getSearchParam } from './methods/getSearchParam';
-export { hasSearchParam } from './methods/hasSearchParam';
-export { pickSearchParam } from './methods/pickSearchParam';
-export { stringifySearchParam } from './methods/stringifySearchParam';
+export { appendParam } from './methods/appendParam';
+export { excludeParam } from './methods/excludeParam';
+export { getAllParams } from './methods/getAllParams';
+export { getParam } from './methods/getParam';
+export { hasParam } from './methods/hasParam';
+export { pickParam } from './methods/pickParam';
+export { stringifyParams } from './methods/stringifyParams';
 
 // RoadMap TODO:
 // 1. Config to enable parsing value to number ---- update docs --- DONE!

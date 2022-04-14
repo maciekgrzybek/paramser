@@ -27,33 +27,33 @@ yarn add paramser
 ```
 
 ```javascript
-import { appendSearchParam } from 'paramser';
-import { excludeSearchParam } from 'paramser';
-import { getAllSearchParams } from 'paramser';
-import { getSearchParam } from 'paramser';
-import { hasSearchParam } from 'paramser';
-import { pickSearchParam } from 'paramser';
-import { stringifySearchParam } from 'paramser';
+import { appendParam } from 'paramser';
+import { excludeParam } from 'paramser';
+import { getAllParams } from 'paramser';
+import { getParam } from 'paramser';
+import { hasParam } from 'paramser';
+import { pickParam } from 'paramser';
+import { stringifyParams } from 'paramser';
 ```
 
 ## Usage
 
-### `getSearchParams`
+### `getParams`
 
 Returns the values for a specific search param.
 
 ```javascript
 // With single param in the search
-getSearchParam('?topic=api', 'topic'); // Returns 'api'
+getParam('?topic=api', 'topic'); // Returns 'api'
 
 // With multiple params in the search
-getSearchParam('?topic=api&topic=not-an-api', 'topic'); // Returns ['api', 'not-an-api']
+getParam('?topic=api&topic=not-an-api', 'topic'); // Returns ['api', 'not-an-api']
 
 // Parse params to numbers when possible
-getSearchParam('?topic=api&amount=121', 'amount', { parseNumbers: true }); // Returns 121
+getParam('?topic=api&amount=121', 'amount', { parseNumbers: true }); // Returns 121
 
 // Parse params to booleans when possible
-getSearchParam('?topic=api&isValid=true', 'isValid', { parseBooleans: true }); // Returns true
+getParam('?topic=api&isValid=true', 'isValid', { parseBooleans: true }); // Returns true
 ```
 
 | Name                  | Type      | Description                       | Required |
@@ -63,13 +63,13 @@ getSearchParam('?topic=api&isValid=true', 'isValid', { parseBooleans: true }); /
 | options.parseNumbers  | `boolean` | Parse to number type if possible  | `false`  |
 | options.parseBooleans | `boolean` | Parse to boolean type if possible | `false`  |
 
-### `getAllSearchParams`
+### `getAllParams`
 
 Returns all params. It can either be an object with key/value pairs or array with just keys or values.
 
 ```javascript
 // Get object with key/value pairs
-getAllSearchParams('?topic=api&technology=nodejs&level=junior');
+getAllParams('?topic=api&technology=nodejs&level=junior');
 // Returns {
 //  topic: 'api',
 //  technology: 'nodejs',
@@ -77,7 +77,7 @@ getAllSearchParams('?topic=api&technology=nodejs&level=junior');
 // }
 
 // Parse params to numbers and booleans when possible
-getAllSearchParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
+getAllParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
   parseNumbers: true,
   parseBooleans: true,
 });
@@ -89,17 +89,17 @@ getAllSearchParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
 // }
 
 // Get just an array of keys
-getAllSearchParams('?topic=api&technology=nodejs&level=junior', {
+getAllParams('?topic=api&technology=nodejs&level=junior', {
   keysOnly: true,
 }); // Returns ['topic', 'technology', 'level']
 
 // Get just an array of keys
-getAllSearchParams('?topic=api&technology=nodejs&level=junior', {
+getAllParams('?topic=api&technology=nodejs&level=junior', {
   valuesOnly: true,
 }); // Returns ['api', 'nodejs', 'junior']
 
 // Parse params to numbers and booleans when possible
-getAllSearchParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
+getAllParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
   valuesOnly: true,
   parseNumbers: true,
   parseBooleans: true,
@@ -114,39 +114,39 @@ getAllSearchParams('?topic=api&technology=nodejs&amount=121&isValid=true', {
 | options.parseNumbers  | `boolean` | Parse to number type if possible                | `false`  |
 | options.parseBooleans | `boolean` | Parse to booleans type if possible              | `false`  |
 
-### `appendSearchParam`
+### `appendParam`
 
 Appends additional search params. Returns updated params string.
 
 ```javascript
 // Appends two params
-appendSearchParam('?topic=api', {
+appendParam('?topic=api', {
   technology: 'nodejs',
   level: 'junior',
 });
 // Returns `topic=api&technology=nodejs&level=junior`
-appendSearchParam(
+appendParam(
   '?topic=api',
   { technology: ['javascript', 'nodejs', 'react'] },
   { arrayType: 'separator', separator: '|' }
 );
 // Returns `topic=api&technology=api|nodejs|react`
 
-appendSearchParam(
+appendParam(
   '?topic=api',
   { technology: ['javascript', 'nodejs', 'react'] },
   { arrayType: 'separator', separator: ',' }
 );
 // Returns `topic=api&technology=api,nodejs,react`
 
-appendSearchParam(
+appendParam(
   '?topic=api',
   { technology: ['javascript', 'nodejs', 'react'] },
   { arrayType: 'bracket' }
 );
 // Returns `topic=api&technology[]=api&technology[]=nodejs&technology[]=react`
 
-appendSearchParam(
+appendParam(
   '?topic=api',
   { technology: ['javascript', 'nodejs', 'react'] },
   { arrayType: 'indexedBracket' }
@@ -159,17 +159,17 @@ appendSearchParam(
 | search | `string` | Search params from the URL                          | `true`   |
 | params | `object` | Key/value pairs of params that needs to be appended | `true`   |
 
-### `excludeSearchParam`
+### `excludeParam`
 
 Removes search params from the url. Returns updated params string.
 
 ```javascript
 // Removes single param
-excludeSearchParam('?topic=api&technology=nodejs', 'technology');
+excludeParam('?topic=api&technology=nodejs', 'technology');
 // Returns `topic=api`
 
 // Removes multiple params
-excludeSearchParam('?topic=api&technology=nodejs&level=junior', [
+excludeParam('?topic=api&technology=nodejs&level=junior', [
   'topic',
   'technology',
 ]);
@@ -181,15 +181,15 @@ excludeSearchParam('?topic=api&technology=nodejs&level=junior', [
 | search | `string`                  | Search params from the URL             | `true`   |
 | params | `string or array<string>` | Param or array of params to be removed | `true`   |
 
-### `hasSearchParam`
+### `hasParam`
 
 Checks if param exists.
 
 ```javascript
-hasSearchParam('?topic=api&technology=nodejs&level=junior', 'topic');
+hasParam('?topic=api&technology=nodejs&level=junior', 'topic');
 // Returns true
 
-hasSearchParam('?topic=api&level=junior', 'technology');
+hasParam('?topic=api&level=junior', 'technology');
 // Returns false
 ```
 
@@ -198,20 +198,17 @@ hasSearchParam('?topic=api&level=junior', 'technology');
 | search | `string` | Search params from the URL            | `true`   |
 | params | `string` | Param that existence is to be checked | `true`   |
 
-### `pickSearchParam`
+### `pickParam`
 
 Picks which param(s) needs to remain and removes other ones.
 
 ```javascript
 // Picks only topic param
-pickSearchParam('?topic=api&technology=nodejs&level=junior', 'topic');
+pickParam('?topic=api&technology=nodejs&level=junior', 'topic');
 // Returns `topic=api`
 
 // Picks two params param
-pickSearchParam('?topic=api&technology=nodejs&level=junior', [
-  'topic',
-  'level',
-]);
+pickParam('?topic=api&technology=nodejs&level=junior', ['topic', 'level']);
 // Returns `topic=api&level=junior`
 ```
 
@@ -220,37 +217,37 @@ pickSearchParam('?topic=api&technology=nodejs&level=junior', [
 | search | `string`                  | Search params from the URL         | `true`   |
 | params | `string or array<string>` | Param or array of params to remain | `true`   |
 
-### `stringifySearchParam`
+### `stringifyParams`
 
 Creates a search param string, based on provided object.
 
 ```javascript
-stringifySearchParam({ topic: 'api', technology: 'nodejs' });
+stringifyParams({ topic: 'api', technology: 'nodejs' });
 // Returns `topic=api&technology=nodejs`
 ```
 
 An array can also be passed as a value of the param. There are few options to do that.
 
 ```javascript
-stringifySearchParam(
+stringifyParams(
   { topic: ['api', 'nodejs', 'react'] },
   { arrayType: 'separator', separator: '|' }
 );
 // Returns `topic=api|nodejs|react`
 
-stringifySearchParam(
+stringifyParams(
   { topic: ['api', 'nodejs', 'react'] },
   { arrayType: 'separator', separator: ',' }
 );
 // Returns `topic=api,nodejs,react`
 
-stringifySearchParam(
+stringifyParams(
   { topic: ['api', 'nodejs', 'react'] },
   { arrayType: 'bracket' }
 );
 // Returns `topic[]=api&topic[]=nodejs&topic[]=react`
 
-stringifySearchParam(
+stringifyParams(
   { topic: ['api', 'nodejs', 'react'] },
   { arrayType: 'indexedBracket' }
 );
@@ -281,4 +278,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Maciek Grzybek - [@maciek_g88](https://twitter.com/maciek_g88) - maciekgrzybek1@gmail.com - [www.maciekgrzybek.dev](www.maciekgrzybek.dev)
+Maciek Grzybek - [@maciek_g88](https://twitter.com/maciek_g88) - maciekgrzybek1@gmail.com - [www.maciekgrzybek.dev](https://www.maciekgrzybek.dev)

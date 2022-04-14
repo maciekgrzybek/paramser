@@ -1,7 +1,7 @@
-import { getAllSearchParams } from '../src';
+import { getAllParams } from '../src';
 
 test('returns all params with their values', () => {
-  expect(getAllSearchParams('?topic=api&other=37&isValid=true')).toEqual({
+  expect(getAllParams('?topic=api&other=37&isValid=true')).toEqual({
     topic: 'api',
     other: '37',
     isValid: 'true',
@@ -10,7 +10,7 @@ test('returns all params with their values', () => {
 
 test('returns all params with their values and parse numbers', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       parseNumbers: true,
     })
   ).toEqual({
@@ -23,7 +23,7 @@ test('returns all params with their values and parse numbers', () => {
 
 test('returns all params with their values and parse booleans', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       parseBooleans: true,
     })
   ).toEqual({
@@ -36,7 +36,7 @@ test('returns all params with their values and parse booleans', () => {
 
 test('returns all params with their values and parse numbers and booleans', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       parseNumbers: true,
       parseBooleans: true,
     })
@@ -49,20 +49,22 @@ test('returns all params with their values and parse numbers and booleans', () =
 });
 
 test('returns all keys of the params', () => {
-  expect(
-    getAllSearchParams('?topic=api&other=stuff', { keysOnly: true })
-  ).toEqual(['topic', 'other']);
+  expect(getAllParams('?topic=api&other=stuff', { keysOnly: true })).toEqual([
+    'topic',
+    'other',
+  ]);
 });
 
 test('returns all values of the params', () => {
-  expect(
-    getAllSearchParams('?topic=api&other=stuff', { valuesOnly: true })
-  ).toEqual(['api', 'stuff']);
+  expect(getAllParams('?topic=api&other=stuff', { valuesOnly: true })).toEqual([
+    'api',
+    'stuff',
+  ]);
 });
 
 test('returns all values of the params and parse numbers', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       valuesOnly: true,
       parseNumbers: true,
     })
@@ -71,7 +73,7 @@ test('returns all values of the params and parse numbers', () => {
 
 test('returns all values of the params and parse booleans', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       valuesOnly: true,
       parseBooleans: true,
     })
@@ -80,7 +82,7 @@ test('returns all values of the params and parse booleans', () => {
 
 test('returns all values of the params and parse numbers and booleans', () => {
   expect(
-    getAllSearchParams('?topic=api&other=stuff&amount=37&isValid=true', {
+    getAllParams('?topic=api&other=stuff&amount=37&isValid=true', {
       valuesOnly: true,
       parseBooleans: true,
       parseNumbers: true,

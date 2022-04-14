@@ -1,12 +1,12 @@
-import { stringifySearchParam } from '../src';
+import { stringifyParams } from '../src';
 
 describe('returns a search string from regular key/value object', () => {
   test('with single param', () => {
-    expect(stringifySearchParam({ topic: 'api' })).toBe('topic=api');
+    expect(stringifyParams({ topic: 'api' })).toBe('topic=api');
   });
 
   test('with multiple params', () => {
-    expect(stringifySearchParam({ topic: 'api', something: 'else' })).toBe(
+    expect(stringifyParams({ topic: 'api', something: 'else' })).toBe(
       'topic=api&something=else'
     );
   });
@@ -14,15 +14,15 @@ describe('returns a search string from regular key/value object', () => {
 
 describe('returns a search string from object that contains array', () => {
   test('with default config', () => {
-    expect(
-      stringifySearchParam({ topic: ['api', 'new-api', 'another-api'] })
-    ).toBe('topic=api&topic=new-api&topic=another-api');
+    expect(stringifyParams({ topic: ['api', 'new-api', 'another-api'] })).toBe(
+      'topic=api&topic=new-api&topic=another-api'
+    );
   });
 
   describe('with separator config', () => {
     test.each(['|', ',', ';'])('that equals %s', (separator) => {
       expect(
-        stringifySearchParam(
+        stringifyParams(
           { topic: ['api', 'new-api', 'another-api'] },
           { arrayType: 'separator', separator }
         )
@@ -32,7 +32,7 @@ describe('returns a search string from object that contains array', () => {
 
   test('with bracket config', () => {
     expect(
-      stringifySearchParam(
+      stringifyParams(
         { topic: ['api', 'new-api', 'another-api'] },
         { arrayType: 'bracket' }
       )
@@ -41,7 +41,7 @@ describe('returns a search string from object that contains array', () => {
 
   test('with indexed bracket config', () => {
     expect(
-      stringifySearchParam(
+      stringifyParams(
         { topic: ['api', 'new-api', 'another-api'] },
         { arrayType: 'indexedBracket' }
       )

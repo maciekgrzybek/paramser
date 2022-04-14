@@ -1,7 +1,7 @@
 import { ArrayOptions } from '../types';
 import { amendSearchParams } from './shared';
 
-export const appendSearchParam = (
+export const appendParam = (
   search: string,
   params: Record<string, any>,
   config?: ArrayOptions

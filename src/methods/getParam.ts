@@ -1,7 +1,7 @@
 import { parseValue } from './shared';
 import { GetOptions } from '../types';
 
-export const getSearchParam = (
+export const getParam = (
   search: string,
   key: string,
   options?: GetOptions

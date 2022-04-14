@@ -1,4 +1,4 @@
-export const excludeSearchParam = (
+export const excludeParam = (
   search: string,
   keys: string | string[]
 ): string => {

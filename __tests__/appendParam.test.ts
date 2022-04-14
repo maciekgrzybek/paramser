@@ -1,14 +1,14 @@
-import { appendSearchParam } from '../src';
+import { appendParam } from '../src';
 
 test('appends single param to the url', () => {
-  expect(appendSearchParam('?topic=api', { 'new-topic': 'new-api' })).toBe(
+  expect(appendParam('?topic=api', { 'new-topic': 'new-api' })).toBe(
     'topic=api&new-topic=new-api'
   );
 });
 
 test('appends multiple params to the url', () => {
   expect(
-    appendSearchParam('?topic=api', {
+    appendParam('?topic=api', {
       'new-topic': 'new-api',
       'newer-topic': 'newer-api',
     })
@@ -18,7 +18,7 @@ test('appends multiple params to the url', () => {
 describe('appends array to the url', () => {
   test('with default config', () => {
     expect(
-      appendSearchParam('?technology=nodejs', {
+      appendParam('?technology=nodejs', {
         topic: ['api', 'new-api', 'another-api'],
       })
     ).toBe('technology=nodejs&topic=api&topic=new-api&topic=another-api');
@@ -27,7 +27,7 @@ describe('appends array to the url', () => {
   describe('with separator config', () => {
     test.each(['|', ',', ';'])('that equals %s', (separator) => {
       expect(
-        appendSearchParam(
+        appendParam(
           '?technology=nodejs',
           { topic: ['api', 'new-api', 'another-api'] },
           { arrayType: 'separator', separator }
@@ -40,7 +40,7 @@ describe('appends array to the url', () => {
 
   test('with bracket config', () => {
     expect(
-      appendSearchParam(
+      appendParam(
         '?technology=nodejs',
         { topic: ['api', 'new-api', 'another-api'] },
         { arrayType: 'bracket' }
@@ -50,7 +50,7 @@ describe('appends array to the url', () => {
 
   test('with indexed bracket config', () => {
     expect(
-      appendSearchParam(
+      appendParam(
         '?technology=nodejs',
         { topic: ['api', 'new-api', 'another-api'] },
         { arrayType: 'indexedBracket' }
