@@ -1,7 +1,9 @@
 {
   "name": "paramser",
-  "version": "0.0.1",
-  "description": "URL Search Params parser",
+  "version": "0.0.2",
+  "description": "URL Search Params parser. Collection of small methods to help you to manipulate the URL search params. This package uses URLSearchParams browser API under the hood (no dependencies!). Package's API is simple, yet very powerful. ",
+  "homepage": "https://github.com/maciekgrzybek/paramser",
+  "bugs": "https://github.com/maciekgrzybek/paramser/issues",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +13,11 @@
     "test:watch": "jest --watchAll",
     "prepublishOnly": "npm run build"
   },
-  "author": "Maciek Grzybek",
+  "author": {
+    "email": "maciekgrzybek1@gmail.com",
+    "name": "Maciek Grzybek",
+    "url": "https://maciekgrzybek.dev"
+  },
   "license": "ISC",
   "devDependencies": {
     "@chialab/esbuild-plugin-commonjs": "^0.14.11",
@@ -24,7 +30,22 @@
     "ts-jest": "^26.1.1",
     "typescript": "^4.5.5"
   },
-  "peerDependencies": {},
+  "keywords": [
+    "browser",
+    "api",
+    "search",
+    "params",
+    "param",
+    "searchparams",
+    "url",
+    "parse",
+    "stringify",
+    "query",
+    "string",
+    "querystring",
+    "qs",
+    "parameter"
+  ],
   "files": [
     "build"
   ]

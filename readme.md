@@ -1,6 +1,6 @@
 # Paramser
 
-Collection of small methods to help you to manipulate the URL search params. This package uses [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams) browser API under the hood. Package's API is simple, yet very powerful. Check out the documentation below on how to use it.
+Collection of small methods to help you to manipulate the URL search params. This package uses [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams) browser API under the hood (no dependencies!). Package's API is simple, yet very powerful. Check out the documentation below on how to use it.
 
 ## Why bother?
 
