@@ -176,10 +176,10 @@ excludeSearchParam('?topic=api&technology=nodejs&level=junior', [
 // Returns `level=junior`
 ```
 
-| Name   | Type     | Description                | Required                               |
-| ------ | -------- | -------------------------- | -------------------------------------- | ------ |
-| search | `string` | Search params from the URL | `true`                                 |
-| params | `string  | array<string>`             | Param or array of params to be removed | `true` |
+| Name   | Type                      | Description                            | Required |
+| ------ | ------------------------- | -------------------------------------- | -------- |
+| search | `string`                  | Search params from the URL             | `true`   |
+| params | `string or array<string>` | Param or array of params to be removed | `true`   |
 
 ### `hasSearchParam`
 
@@ -215,10 +215,10 @@ pickSearchParam('?topic=api&technology=nodejs&level=junior', [
 // Returns `topic=api&level=junior`
 ```
 
-| Name   | Type     | Description                | Required                           |
-| ------ | -------- | -------------------------- | ---------------------------------- | ------ |
-| search | `string` | Search params from the URL | `true`                             |
-| params | `string  | array<string>`             | Param or array of params to remain | `true` |
+| Name   | Type                      | Description                        | Required |
+| ------ | ------------------------- | ---------------------------------- | -------- |
+| search | `string`                  | Search params from the URL         | `true`   |
+| params | `string or array<string>` | Param or array of params to remain | `true`   |
 
 ### `stringifySearchParam`
 
@@ -257,11 +257,11 @@ stringifySearchParam(
 // Returns `topic[0]=api&topic[1]=nodejs&topic[2]=react`
 ```
 
-| Name              | Type                   | Description                                                                                                      | Required                        |
-| ----------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------------- | ------- |
-| params            | `object<string, string | array>`                                                                                                          | Object with params to stringify | `true`                             |
-| options.arrayType | `'separator'           | 'bracket'                                                                                                        | 'indexedBracket'`               | Defines how array should be parsed | `false` |
-| options.separator | `string`               | Defines what kind of separator will be used in array. Use with care as not all characters will work with the URL | `false`                         |
+| Name              | Type                                           | Description                                                                                                      | Required |
+| ----------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| params            | `object<string, string or array>`              | Object with params to stringify                                                                                  | `true`   |
+| options.arrayType | `'separator' or 'bracket' or 'indexedBracket'` | Defines how array should be parsed                                                                               | `false`  |
+| options.separator | `string`                                       | Defines what kind of separator will be used in array. Use with care as not all characters will work with the URL | `false`  |
 
 ## Tips
 
